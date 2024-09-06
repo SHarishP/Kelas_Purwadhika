@@ -72,10 +72,29 @@ kmConverter(1000000, 'mm');
 
 /* 
     Tugas 4 
-
-    NOT YET
+    Membuat code untuk memformat number menjadi currency (IDR) 
 */
-
+    // Buat variabel untuk menyimpan number
+    const _number: number = 1000;
+    // Buat variabel baru untuk menangkap konversi currency dengan menggunakan method .toLocaleString
+    let numberToCurrency = _number.toLocaleString('id-ID',{style:'currency', currency:'IDR'});
+    console.log(numberToCurrency);
+        /* 
+            NOTE :
+            Method .toLocaleString berfungsi untuk merubah number menjadi string dengan format masing-masing negara
+            Cek this link for reference :
+            https://www.w3schools.com/jsref/jsref_tolocalestring_number.asp
+        */
+    // Cara 2
+    numberToCurrency = new Intl.NumberFormat('in-ID', {
+        style: 'currency',
+        currency: 'IDR',
+    }).format(_number);
+    console.log(numberToCurrency)
+        /* 
+            NOTE :
+            Intl.NumberFormat merupakan CLASS untuk mengenable language-sensitive number formatting
+        */
 
 /* 
     TUGAS 5
