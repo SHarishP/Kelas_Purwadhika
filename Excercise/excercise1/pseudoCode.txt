@@ -1,0 +1,39 @@
+/* Excersice 1 - By Seiawan Harish P */
+// Tugas 1 menghitung luas persegi.
+// Buat variabel untuk menyimpan panjang dan lebar persegi
+// Buat variabel untuk rumus luas persegi => panjang x lebar
+// Tampilkan dalam console.
+
+// Tugas 2 menghitung keliling persegi
+// Buat variabel untuk menyimpan panjang dan lebar persegi
+// Buat variabel untuk rumus keliling persegi
+// Tampilkan dalam console
+
+// Tugas 3 hitung diameter, keliling, dan luas dari sebuah lingkaran
+// Buat variabel untuk menyimpan radius, nilai PI dengan menggunakan Property PI
+// Buat variabel untuk menangkap panjang diameter yaitu 2xradius
+// Buat variabel untuk menghitung keliling lingkaran yaitu 2xPIxradius
+// Buat variabel untuk menghitung luas lingkaran yaitu Pixradius^2
+// Tampilkan dalam console
+
+// Tugas 4 menghitung suatu sudut dari segitiga dari 2 sudut yang diberikan
+// Total sudut dari segitiga adalah 180 derajat, maka
+// Buat variabel untuk menyimpan kedua sudut segitiga yang telah diketahui
+// Buat variabel untuk mencari sudut yang ditanyakan
+// Tampilkan dalam console
+
+// Tugas 5 Konversi jumlah hari ke tahun, bulan, dan hari.
+// Note 1 tahun = 365 hari dan 1 Bulan = 30 hari
+// Buat variabel untuk menangkapjumlah hari, banyaknya hari dalam setahun, dan banyaknya hari dalam sebulan
+// Buat variabel dan hitung tahun dengan cara total hari / hari dalam setahun.
+// Bulatkan hasil pembagian tahun, kebawah.
+// Buat variabel dan hitung bulan dengan cara cari (sisa pembagian total hari / hari dalam setahun) / jumlah hari dalam sebulan
+// Bulatkan hasil pembagian bulan kebawah.
+// Buat variabel dan hitung hari dari (sisa pembagian tahun / jumlah hari)
+// Tampilkan dalam console
+
+// Tugas 6 Hitung perbedaan hari
+// Buat variabel untuk menangkap date baru 
+// konversi date baru ke day dengan method getDay()
+// Kurangi kedua hari yang telah dikonversikan
+// Tampilkan dalam console
