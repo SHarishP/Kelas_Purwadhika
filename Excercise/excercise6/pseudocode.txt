@@ -1,0 +1,35 @@
+NOMOR 1
+    Create a function to calculate array of student data:
+    1. Dengan menggunakan Typescript, buat interface 'IStudent' untuk dapat menyimpan
+    data-data pelajar dengan isi : 
+        Name -> String
+        Email -> String
+        Age -> Date
+        Score -> Number
+    2. Initiate Array of Object 'students' dengan tipe data IStudent
+    3. buat interface 'IResult' yang merupakan '2 OBJECTS' untuk menampung 'scores'  dan 'ages' dari array 'students' 
+    nantinya.
+    4. Dikarenakan 'age' of 'students' mempunyai tipe data 'Date', maka perlu membuat function 'realCode' untuk mencari umur aktual dari 
+    tiap student, dengan cara:
+        4.1. Menyimpan tanggal hari ini pada variabel 'today'
+        4.2 Konversi 'today' dan 'age' menjadi milisecond atau ambil tahunnya dan kurangi 'today' dan 'age' 
+    5. Untuk mencari nilai 'score' dan 'age' dari 'students' buat function 'calculateArray' dengan langkah2:
+        NOTE : COMPUTER ITU GAK NGERTI!
+        5.1 initiate 'result' dengan tipe data 'IResult';
+        5.2 Lakukan looping pada value array 'students' untuk mengambil 'score' dan 'age', 
+        simpan dalam variabel 'containerScore' dan 'containerAge'
+        5.3 Sebelum menyimpan nilai 'age' of 'students' panggil function 'realAge' untuk mengkonversi 'age' of 'student'
+        menjadi TAHUN nya saja. Karena diawal, tpe data 'age' of 'student' adalah DATE. Kemdudian masukkan ke dalam 'containerAge'
+        5.4  Cari value dari 'result' dengan memasukkan value dari 'containerScores' dan  'containerAges'
+        dengan mengutilize Math.min, Math.max, arr.reduce;
+        5.5 RETURN result;
+
+NOMOR 2
+    Create a Program to create transaction
+    1. Buat Interface 'IProduct' untuk menyimpan tipe data 'name' dan 'price' yang nantinya akan diimplement dalam class 'Product'
+    2. Buat Interface 'ITransaction' yang menyimpan tipe data aray 'products' yang berisikan object 'product' dengan tipe data IProduct, dan 'qty'nya
+    3. Buat class 'Transaction' yang meng implements 'ITransaction' serta terdapat value 'total' yang nantinya akan menyimpan harga akhir dari semua product.
+    4. Di dalam class 'Transaction' buat method :
+        4.1 'addToCart' yang menerima 'product' dan 'qty' untuk menghitung semua harga total barang , dan menyimpan value product yang user masukkan
+        4.2 'showTotal' untuk mengembalikan products apa saja yang sudah dimasukkan dan mengembalikan harga total
+        4.3 'checkOut' menyimpan semua product dan mengembalikan semua product
