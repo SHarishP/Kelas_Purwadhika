@@ -127,7 +127,7 @@ interface IUser {
         };
     };
     greet: () => string; 
-    test: () => {};
+    // test: () => {};
 }
 /* 
     NOTE :
@@ -157,7 +157,7 @@ const user :IUser = {
     // test() {
     //     return this;
     // }
-    test : () => {return this};
+    // test : () => {return this};
 };
 console.log(user.greet())
 
@@ -167,7 +167,7 @@ console.log(user.greet())
 console.log(user.greet());
 console.log(user.name);
 console.log(user['name']);
-console.log(user.test())
+// console.log(user.test())
 
 console.log(user.tempatTinggal.alamatLengkap?.kodePos) // Chaining untuk mendapatkan value dari object di dalam object
 
