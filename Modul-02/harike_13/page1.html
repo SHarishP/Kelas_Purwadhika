@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Untuk menambahkan ekternal CSS, perlu ditambahkan link -->
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <!-- Penggunaan 'type' pada <link> berfungsi untuk memberikan informasi kepada browser
+     dan akan sangat berpengaruh ketika kita mempunyai lebih dari 1 link atau lebih dari dari 1 meta-->
+    <title>CSS</title>
+    <!-- Penambahan inline CSS dimasukkan ke dalam head -->
+    <style>
+        /* Selector Tag */
+        h3 {
+            color: brown;
+        }
+        p {
+            color: red;
+            font-size: 20px;
+            line-height: 2em; 
+            /* 
+                em : relative to current font size
+                berarti line-height = 2 * 20px
+            */
+        }
+
+        /* Selector Class */
+        .title-internal {
+            color: magenta;
+        }
+
+        /* Selector ID */
+        #subtitle-internal{
+            color: cornflowerblue;
+        }
+
+        #rem {
+            line-height: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <div style="font-size: 12px;">
+        <h1>Ini Page 1 - CSS</h1>
+        <!-- Content Section -->
+        <!-- Contoh Inline CSS -->
+        <div style="color: blueviolet;">
+            <p style="color: blue;">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Architecto numquam dolorem voluptatibus velit, maiores voluptas 
+                vel aspernatur expedita enim nulla veniam non eum eligendi 
+                adipisci reiciendis quis optio tempore et.
+            </p>
+            <p>
+                test
+            </p>
+        </div>
+
+        <!-- Internal CSS -->
+        <div>
+            <h3 class="title-internal">Ini Internal CSS</h3>
+            <h3>Teks ini ikut berubah karena 
+                selector internal CSS</h3>
+            <h3 id="subtitle-internal">Contoh penggunan Selector ID</h3>
+        </div>
+
+        <!-- External CSS -->
+        <div>
+            <h4 class="title-internal">Ini Eksternal CSS</h4>
+        </div>
+
+        <!-- Contoh penggunaan rem -->
+        <div>
+            <h3>Contoh Penggunaan rem</h3>
+            <p id="rem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sint fuga eligendi 
+                exercitationem sapiente voluptas inventore, consectetur consequuntur, molestiae quo 
+                asperiores alias placeat, odio mollitia facere obcaecati non explicabo maxime?</p>
+        </div>
+
+        <!-- Contoh Margin Border dan Padding -->
+        <div>
+            <h5 style="background-color: aqua; border: solid 1px; padding: 1em; margin: 2em;">Contoh Margin Border dan Padding</h5>
+        </div>
+
+    </div>
+</body>
+</html>

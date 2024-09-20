@@ -1,0 +1,23 @@
+FRONT END DEVELOPMENT
+Front End Development adalah mendevelop halaman website yang dapat dilihat oleh user, seperti 'button', 'next page', 
+dan lain-lain. Terdapat 3 Fundamental pada Front End Development: HTML, CSS, dan JAVASCRIPT
+HTML : Berfungsi untuk menentukan konten dari sebuah halaman website,
+CSS : Befungsi sebagai styling website
+HTML : Berfungsi membuat website kita menjadi interaktif
+
+Adapun urutan membuat website adalah:
+1. Membuat struktur website dengan HTML,
+2. Memberikan styling website dengan CSS,
+3. Memberikan interaktif pada halaman website dengan JAVASCRIPT
+
+Terdapat 3 Cara penulisan CSS:
+1. Inline CSS
+2. Internal CSS
+3. Ekternal CSS
+
+Jika kita menggunakan Internal / Inline CSS, apabila kita reload ulang website,
+maka css nya juga ikut tereload. Jika eksternal css, browser akan menyimpan data ekternal css,
+dan mereload ulang htmlnya. Dan Ekternal CSS lebih unggul dalam reuseability
+
+Ekternal CSS lebih banyak digunakan untuk global styling. Sedangkan internal / Inline
+hanya untuk 1 file / 1 tag saja.
