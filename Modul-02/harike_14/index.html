@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .static{
+            position: static;
+            border: 1px solid black;
+            top: 5em;
+            font-size: 24px;
+        }
+        .relative{
+            position:relative; 
+            /* Penggunaan position: relative element masih mengikuti flow */
+            border: 1px solid black;
+            top: 15em;
+            left: 5em;
+        }
+
+        .absolute {
+            position: absolute;
+            /* 
+                Penggunaan absolute membutuhkan parent yang punya position : relative 
+                Penggunaan absolute bisa digunaakan untuk menambahkan logo 
+            */
+            border: 1px solid black;
+            top: 5em;
+
+        }
+        
+        .fixed {
+            position:fixed;
+            /*
+                position: fixed membuat element tetap stay di viewport kita
+            */
+            border: 1px solid black;
+            /* padding: 2em; */
+            bottom: 2em;
+
+        }
+        .sticky {
+            position: sticky;
+            position: -webkit-sticky;
+            top: 5px;
+            border: 1px solid black;
+            background-color: blue;
+            width: 5em;
+            left: 80%;
+        }
+        /* 
+            Perbedaan em dan rem:
+            em : ukuran akan mengikuti ukuran parent nya
+            Misal pada pada class static > div, mempunyai font-size 24px. Jika pada childnya nya terdapat
+            height 2em, maka ukuran 2em tersebut adalah 2x 24 px.
+
+            rem : ukuran yang akan mengikuti ukuran root yaitu 16px
+        */
+    </style>
+</head>
+<body>
+    <div style="height: 2000px;">
+        <div class="static" style="background-color: aquamarine;">
+            <div style="height: 2em; background-color: blueviolet;">
+                <h2>Position: Static</h2>
+            </div>
+        </div>
+        <div class="relative">
+            <h2>Position: relative</h2>
+        </div>
+        <div>
+            ini static lagi
+        </div>
+        <div class="relative">
+            <div class="absolute">
+                <h2>Position: absolute</h2>
+            </div>
+        </div>
+        <div>
+            Ini static lagi
+        </div>
+        <div class="fixed">
+            <h2>Position: Fixed</h2>
+        </div>
+        <div class="sticky">
+            <h2>Position: Sticky</h2>
+        </div>
+    </div>
+</body>
+</html>

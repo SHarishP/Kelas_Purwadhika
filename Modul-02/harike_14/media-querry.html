@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: red;
+            font-size: 42px;
+            padding: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1024px;
+        }
+
+        .content {
+            background-color: yellow;
+            font-size: 42px;
+        }
+        @media screen and (max-width: 488px) {
+            .container{
+                background-color: blue;
+                font-size: 24px;
+                /* 
+                    Meskipun kita tidak menambahkan padding disini, 
+                    padding tetap masuk ke dalam style disini, dengan ukuran 2em yang mengacu kepada
+                    font-size nya yaitu 24px
+                */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h2>Ini Media Querry</h2>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- 
+    Kak mau tanya lagi untuk yang media querry. Tadi max width untuk mobile device kan 
+    320px — 480px: Mobile devices
+
+    Tapi untuk mobile device rata-rata sekarang screen resolutionnya sudah 1080 x 2400 pixels
+    Berarti media querry maksimal untuk mobile devices berapa ya kak? 
+
+    Display itu ada screen pixels dan display pixels, 
+    display pixels : 1080 x 2400 pixels, ini merupakan kepadatan gambar pada hp
+    yang digunakan pada media querry adalah 'screen pixels' (ukuran layar)
+    dimana screen pixels di hp rata rata 320px — 480px
+-->
