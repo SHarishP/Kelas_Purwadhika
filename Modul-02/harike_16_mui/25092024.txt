@@ -1,0 +1,12 @@
+Pembahasan Material UI
+
+Material UI merupakan componend library, sama seperti compponen buatan sendiri, maka kita harus melakukan import
+
+Cara Install :
+1. masuk terminal masukkan -> npm i @mui/material @emotion/react @emotion/styled
+2. Di dalam App.tsx, kita tidak membutuhkan import .css, jadi bisa langsung dihapus
+3. Berhubung Material UI merupakan komponen library, maka kita perlu melakukan import, bisa cek di app.tsx
+
+
+Pada import { Box, Container, Typography, styled } from "@mui/material";
+styled digunakan untuk internal componen

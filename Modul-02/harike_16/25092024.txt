@@ -1,0 +1,24 @@
+Pembelajaran Tentang Routing, menggunakan file di 'harike_15'
+
+Pembahasan tentang CSS Framework
+CSS Framework digunnakan untuk mempermudah styling page kita
+Tailwind berkonsep utilities first
+
+Cara install tailwind:
+1. Masuk ke terminal
+2. PASTIKAN DIRECTORY TEMPAT UNTUK MENGINSTALL
+3. Terminal -> npm i -D tailwindcss postcss autoprefixer
+4. Terminal -> npx tailwindcss init -p
+    Note : Jika tidak ada -p, maka hanya akan muncul tailwind.config.js, sedangkan kita butuh postcss.config.js
+5. Untuk mau pakai tailwind kita harus specified di tailwind.config.js
+6. Kita tetap harus membuat css native untuk bisa menggunakan tailwind, cek ./src/assets/index.css
+    a Hapus file pada index.css di folder src, masukan 
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+    Note : 
+    Jika di dalam index.css, @tailwing bermasalah "unkown link", masuk ke ctrl + shift + p, preferences: Open user Setting (JSON)
+    dan masukkan "css.lint.unknownAtRules": "ignore" ;
+7. Untuk memasukkan styling, langsung inline di tag HTML. JANGAN LUPA BACA DOKUMENTASI DI TAILWIND
+
+Kak, terus kalo pake tailwind file app.css itu masih ada gunanya ngga? App.css sudah tidak dipakai, kecuali ada yang reusable

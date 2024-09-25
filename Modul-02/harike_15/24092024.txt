@@ -62,3 +62,29 @@ Sorry kak mau tanya
 2. Berhubung .tsx gabisa pakai live preview, gimana ya kak caranya supaya kita bisa lihat hasil html dan css per komponennya? apa tetep harus di npm run dev ya?
     Tetap harus menggunakan npm run dev
 
+
+Pembahasan Tanggal 25/09/2024
+
+Pembahasan Router
+Install router : Masuk ke terminal -> 'npm i react-router-dom'
+
+Cara menggunaan Router Dom
+
+Note:
+pada main.tsx, StrictMode boleh dihapus. karena berhubungan dengan developer mode
+<StrictMode>
+    <App />
+  </StrictMode>,
+
+
+Kak, mau tanya. Syntax untuk <Route path='' element={<JumbotronSection name=" "/>} /> ini, gak langsung ada di vscode nya ya? Gak kyk tag HTML <h1> <p>, yang kalau kita ngetik h, langsung muncul suggestion dari vscodenya?
+Ya, harus ngetik sendiri. Karena merupakan library dan gak default dari VSCode nya
+
+Ini adalah pembahasan Routing
+<Routes>
+    <Route path='dashboard'>
+    <Route path='' element={<JumbotronSection name="Harish"/>}/>
+    <Route path='testimoni' element={<TestimoniSection/>}/>
+    </Route>
+    <Route path='contact-us' element={<ContactUsSection/>}/>
+</Routes>

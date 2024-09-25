@@ -3,9 +3,11 @@
 // import viteLogo from '/vite.svg'\
 
 /* Untuk memasukkan komponen jangan lupa untuk import */
+import { Routes, Route } from 'react-router-dom';
 import JumbotronSection from './pages/jumbotronSection';
 import './App.css'
 import ContactUsSection from './pages/contactUsSection';
+import TestimoniSection from './pages/testimoniSection';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -36,9 +38,18 @@ function App() {
 
     /* Membuat HTML Tag baru */
     <div>
-      <h2>First React</h2>
-      <JumbotronSection name={"Harish"} />
-      <ContactUsSection />
+      <div>Navbar</div>
+      <div>
+        <h2>First React</h2>
+        <Routes>
+          <Route path='dashboard'>
+            <Route path='' element={<JumbotronSection name="Harish"/>}/>
+            <Route path='testimoni' element={<TestimoniSection/>}/>
+          </Route>
+          <Route path='contact-us' element={<ContactUsSection/>}/>
+        </Routes>
+      </div>
+      <div>Footer</div>
     </div>
   );
 }
