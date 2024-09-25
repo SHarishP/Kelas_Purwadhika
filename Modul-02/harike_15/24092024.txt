@@ -1,0 +1,64 @@
+Pembahasan tentang DOM
+DOM : Document Object Model
+Document: Merupakan web page anda, termasuk semua yang dapat anda lihat di web page, termasuk teks, image, dan lain-lain
+
+Penyimpanan JS bisa disimpan di head atau di body. Perbedaan ada di laod time sebuah page.
+Jika, kita simpan di head dan memiliki banyak function yang perlu di load, maka membuat webpage menunggu dulu sampai js selesai, 
+baru yang lain. 
+
+Maka dari itu lebih bagus jika disimpan di <body>
+
+Framework : adalah sebuah tools untuk menciptakan komponen yang sudah ready dan bisa langsung dipakai
+
+REACT adalah sebuah library yang fungsinya untuk membangun UI 
+
+Terdapat Single Page Aplication dan Multiple Page Aplication
+
+Cara install Vite
+1. Masuk ke terminal
+2. PASTIKAN DIRECTORY TEMPAT UNTUK MENGINSTALL
+3. npm create vite@latest / npm create vite@latest . -> ditambahkan titik supaya langsung tanpa memilih option
+4. Klik y to proceed
+5. Pada "Project name:" beri nama project, karena akan membuat folder sesuai dengan nama project nya
+6. Pilih "framework": "React"
+7. Pilih "variant": "Typescript"
+8. Masuk ke directory "nama project"
+9. Cek apakah sudah ada folder 'node_modules'. karena biasanya belum ada folder node_modules tetapi sudah ada package.json
+10. Jika sudah ada 'package.json' npm i / npm install untuk menginstal 'node_modules'
+11. Cek apakah vite sudah jalan, masukkan di terminal 'npm run dev'
+12. Untuk mematikan localhost, masuk terminal dan ctrl + c 
+
+
+Pada folder 'nama project' ada folder bernama 'public' untuk menyimpan file static kita, seperti image, css
+
+Penjelasan 'npm run dev':
+pada saat menjalankan 'npm run dev', react akan menjalankan index.html yang ada di folder 'nama project'
+di dalam HTML menjalankan '<script type="module" src="/src/main.tsx"></script>'
+
+Pada main.tsx, script mengimport 'App' dari ./App.tsx, 'App' ini disebut 'Komponen'
+
+Pembahasan extenstion file
+.tsx / .jsx adalah sebuah extention yang digunakan untuk mereturn html code.
+Jika untuk membuat simple script cukup gunakan .ts
+
+Untuk membuat .tsx atau .jsx yang mereturn sebuah html code (atau yang disebut komponen),
+nama function untuk huruf pertama HARUS HURUF BESAR
+
+RULE OF THUMB: Tidak boleh membuat html code terlalu panjang
+
+Untuk ngebuild, di terminal -> 'npm run build'
+
+Prop : adalah argument pada function di dalam komponen
+
+
+Question :
+Kak, Waktu saya buka react.svg, gak ada nama reactLogo, Tapi kenapa di App.tsx import reactLogo from './assets/react.svg' ya?
+Answer:
+Karena berhubungan dengan export import, svg tidak ada export, jadi bisa diberi nama apapun
+
+Sorry kak mau tanya
+1. Misal mau bikin navbar, hero section, contact section, about section, dipisahin semua ya? Dan apakah untuk nggabungin komponennya apa harus di App.tsx ya? Apa gaboleh di main.tsx?
+    Lebih baik tetap dimasukkan di App.tsx, karena supaya main.tsx tetap rapi dan hanya untuk Higher Order Componen
+2. Berhubung .tsx gabisa pakai live preview, gimana ya kak caranya supaya kita bisa lihat hasil html dan css per komponennya? apa tetep harus di npm run dev ya?
+    Tetap harus menggunakan npm run dev
+

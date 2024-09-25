@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <div id="container">
+        <!-- Contoh Penggunaan Id -->
+        <h1 id="idElement">Javascript DOM  with ID</h1>
+        <button onclick="updateText2()">Update Text</button>
+        
+        <!-- contoh penggunaan class -->
+        <h1 class="textElement">Javascript DOM with Class</h1>
+        <button onclick="updateText1()">Update Text</button>
+        <button onclick="addElement()">Add Element</button>
+    </div>
+    <script>
+        //  Contoh penggunaan Id
+        function updateText2() {
+            const element2 = document.getElementById("idElement")
+            element2.innerText = "Updated JS DOM with ID"
+        }
+        
+        // Contoh penggunaan class
+        function updateText1() {
+            const element = document.getElementsByClassName("textElement");
+            console.log(element[0]);
+            element[0].innerText = "Updated JS DOM with Class";
+        };
+
+        function addElement() {
+            const element = document.getElementById("container")
+            
+            const newElement = document.createElement("p");
+            newElement.textContent = "ini element baru menggunaan tag 'p'";
+            element.appendChild(newElement);
+            /* Konsep .appendChild() sama seperti .push() yaitu menambahkan dibawahnya */
+        };
+    </script>
+</body>
+</html>
