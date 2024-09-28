@@ -201,37 +201,36 @@ body {
     position: absolute;
     /* background-color: #d4d3cf; */
     bottom: 1rem;
-    width: 100%;
+    /* width: 100%; */
     align-content: center;
+    gap: 4rem;
 }
 
 .form-content {
-    margin: 0 2rem;
-    border: 1.5px solid var(--bg);
-    font-size: 1rem;
-    color: var(--bg);
-    padding: 1rem 8rem 1rem 1rem;
-    border-radius: 2rem;
-    position: relative;
     display: flex;
+    flex-basis: 50%;
+    gap: 4.5rem;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--bg);
+    padding: 0rem .25rem 0rem 1.25rem;
+    border-radius: 2rem;
 }
 
-.form-content p {
-    display: inline;
-    font-size: 1.2rem;
-    /* background-color: #865439; */
-    font-weight: 400;
+
+.form-content-msg p {
+    color: var(--bg);
+    font-size: 1rem;
 }
 
-.form-content span {
-    position: absolute;
-    top: 15%;
-    right: 0.4rem;
-    border: 1.5px solid var(--bg);
-    padding: 0.5rem;
-    border-radius: 1.5rem;
-    background-color: var(--bg);
+
+.form-content-btn span {
     color: var(--font);
+    background-color: var(--bg);
+    font-size: 1.25rem;
+    padding: .5rem;
+    border: 1px solid var(--bg);
+    border-radius: 2rem;
 }
 
 .form-content:hover {
