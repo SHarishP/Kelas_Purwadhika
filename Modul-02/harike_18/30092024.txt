@@ -1,0 +1,30 @@
+Pembahasan React Hooks
+
+React Hooks, supaya bisa menyimpan data. 
+
+Alasan kenapa pakai Hooks?
+1. Re-usable
+2. Cleaner Code
+3. No more Class Componenent
+
+React Hooks merekomendasikan penggunaan functional component, karena lebih mudah
+
+Tujuan dan Kelebihan penggunaan React Hooks di Aplikasi React
+1. Simplified State Management
+2. Custom Hookks
+3. Improved Readability
+4. Reduced Boilerplate
+5. Easy Side Effect Handling
+6. Improved Performance
+
+Most Commonly Used React Hooks:
+1. useState (Penting)
+2. useEffect (Penting)
+3
+
+
+
+
+
+NOTE : 
+Dalam pembuatan hamburger Menu, kita bisa menggunakan useState<boolean>(true)
