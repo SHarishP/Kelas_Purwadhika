@@ -1,0 +1,36 @@
+Network Call
+    Merupakan context dari web development, merefer ke proces dari aplikasi software yang 
+    berkomunikasi ke server untuk bertukar data
+
+    Nanti di network call ada Request dan Respond
+
+    Maka dari itu digunakan HTTPS
+
+    Di dalam HTTP ada method:
+    1. GET request : untuk meminta data / fetching data
+    2. POST request : memasukkan / mengirimkan data ke database
+    3. PUT and PATCH method : digunakan untuk mengupdate sebuah data pada data yang sudah tersimpan sebelumnya
+    4. DELETE method : meminta server untuk mendelete sebuah data
+
+    Jika kita masuk ke sebuah website, dan buka console.log, biasanya ada method GET 
+
+    Ketika kita melakukan Request, kita juga membutuhkan Respond, dimana Respond terdiri dari 3 komponen berikut:
+    1. Status Code (200, 201, 204, 400, 404, 500)
+    2. Headers (Jam request, jam respond, dan tipe file yang direspond apakah JSON atau XML)
+    3. Body (Data itu sendiri, bisa berupa massage atau object lainnya)
+
+    Jika kita melakukan data, biasanya diambil dari Body dari Respond
+
+    Untuk melakukan Network Call, kita membutuhkan Service nya
+
+    Instal :
+    1. di terminal : npm i axios formik yup
+    2. npm i react-router-dom@6
+
+    "Axios" adalah sebuah package untuk mengganti fetch. Axios berbentuk Isomorphic, simple nya kita bisa pakai di backend dan frontEnd
+    Saat hanya pakai fetch, bentuk datanya adalah JSON, sehingga perlu di parse. Sedangkan Axios, sudah otomatis di parse
+
+    "Formik" adalah sebuah package untuk mengatur form kita, memudahkan kita pembuatan sebuah form / input, membantu data yang kita tulis, 
+    dan membantu validasi data yang dikirimkan 
+
+    Validasi pada formik dibantu oleh "Yup". "Yup" membuat skema untuk validasi

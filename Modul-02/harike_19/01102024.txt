@@ -1,0 +1,60 @@
+Pembahasan useContext, useMemo, createContext, dan custom hooks, cek di harike_18
+
+State Management di harike_19
+
+State Management terdiri dari pembahasan Global State dan Local State
+Perbedaan Global State dan Local State adalah:
+Pada Global State, semua aplikasi kita dapat menggunakan statenya, dengan cara melempar prop / useContext
+
+Contoh penggunaan global state :
+Anggap semua aplikasi kita dibungkus oleh App.tsx, dan semua komponen dipanggil di App.tsx dan kita buat state. State ini bersifat global. 
+Karena semua komponen dibungkus di dalam App.tsx
+
+Local State : Hanya bisa diakses di local .tsx
+
+
+Local Storage -> Cek localStorage.tsx
+    Merupakan tempat untuk menytimpan "Object Data" di dalam browser yang sifatnya 'persist'.
+    Yang mana apabila tidak dihapus secara manual, data tsb tidak akan hilang meskipun kita telah menutup browsernya. 
+    Hal ini dapat terjadi karena data tsb disimpan di dalam client browser
+
+    Ini digunakan untuk menyimpan data YANG BUKAN SENSITIVE Data
+
+    Local Storage dapat digunakan untuk menyimpan setting, token. Selain itu, karena disimpan di dalam browser client, maka data
+    yang disimpan dapat berbeda-beda
+    Biasanya dipakai untuk akses token dan reference token
+    Capacity 5-10Mb
+
+Perbedaan Local Storage dan Session:
+    Session hampir sama dengan local storage. Tetapi data pada session akan hilang jika kita close window / pindah tab
+
+SessionStorage 
+    Sama seperti Local Storage, Session Storage disimpan di browser, tetapi data akan hilang jika pindah tab atau close window
+    Capacity 5-10Mb
+
+
+Cookies 
+    Digunakan untuk menyimpan informasi tentang website atau preference website seperti theme website
+    Selama tidak dihapus, maka tidak akan hilang
+    Cookies biasanya di akses lewat server
+    Biasanya dipakai untuk akses token dan reference token
+    
+    Cara Install cookie: di terminal ketikkan "npm i react-cookie"
+    Capacity 4Mb
+
+
+REDUX
+    Adalah sebuah tool yang membantu memanage global state, tetapi tidak selalu kita menggunakan REDUX
+    Kapan penggunaan REDUX?
+    1. Jika kita mempunyai banyak state dan dipakai dibeberapa komponen kita
+    2. State - State tersebut sering di update
+    3. Jika ada logic, sama seprti reducer. Dimana reducer sama seperti penyimpanan state, tetapi bisa complex logic
+    4. Aplikasi kita medium sampai large-sized
+
+    Konsep REDUX sama seprti reducer. Dimana reducer menggunakan penyimpanan state, dan jika ingin mengupdate state tersebut maka kita harus
+    menggunakan dispatch.action
+
+    penyimpanan data REDUX disimpan pada "store"
+    Kita perlu package lagi
+    Cara instal : masuk ke terminal npm i @reduxjs/toolkit react-redux
+

@@ -10,17 +10,21 @@ Alasan kenapa pakai Hooks?
 React Hooks merekomendasikan penggunaan functional component, karena lebih mudah
 
 Tujuan dan Kelebihan penggunaan React Hooks di Aplikasi React
-1. Simplified State Management
-2. Custom Hookks
+1. Simplified State Management (Penggunaan useState)
+2. Custom Hookks (penggunaan Custom Hooks)
 3. Improved Readability
 4. Reduced Boilerplate
-5. Easy Side Effect Handling
-6. Improved Performance
+5. Easy Side Effect Handling (Penggunaan useEffect -> biasanya digunakan untuk fetching data)
+6. Improved Performance (Penggunaan useMemo dan useCallback)
 
 Most Commonly Used React Hooks:
 1. useState (Penting)
 2. useEffect (Penting)
-3
+3. useRef
+4. useMemo
+5. useContext
+6. useReducer
+7. useCallback
 
 
 
@@ -28,3 +32,10 @@ Most Commonly Used React Hooks:
 
 NOTE : 
 Dalam pembuatan hamburger Menu, kita bisa menggunakan useState<boolean>(true)
+
+
+Q:
+Apa fungsi penggunaan .Dispatch dan .Provider di auth.tsx? untuk liat dokumentasi methodnya, dimana ya kak? Dan gimana cara kita bisa menentukan kalau komponennya butuh {children}?
+
+Q: 
+Kak, kenapa penulisan props di auth.tsx 'function Auth({ children }: { children: JSX.Element})', kenapa kok gak langsung seperti 'function Auth (children: JSX.Element)'?
