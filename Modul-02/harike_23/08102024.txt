@@ -1,0 +1,15 @@
+Pembahasan Template
+Template mirip dengan Layout, dimana membungkus page-page (childrennya), dan hanya boleh 1
+
+Apa perbedaan Layout dengan Template? Layout bersifat persist, sedangkan 
+
+urutan Template adalah
+    <Layout>
+        <Template>
+            <App />
+        </Template>
+    </Layout>
+
+
+Pembahasan API
+Kita bisa membuat next.js menjadi monolithic, dengan membuat folder di dalam app yaitu api/users/route.ts

@@ -55,6 +55,24 @@ REDUX
     menggunakan dispatch.action
 
     penyimpanan data REDUX disimpan pada "store"
+
     Kita perlu package lagi
     Cara instal : masuk ke terminal npm i @reduxjs/toolkit react-redux
+    1. Buat folder di dalam src bernama "redux", karena biasanya redux itu terpisah
+    2. Buat folder di dalam redux bernama "slice", dan file lagi dengan nama bebas, contoh disini yaitu "counter.ts" (./redux/slice)
+    3. Di dalam file "counter.ts" import { createSlice } from "@reduxjs/toolkit", -> lanjut buka filenya
+        3.1. "createSlice" adalah sebuah tool yang dimiliki oleh redux toolkit untuk membuat action dan action type, 
+                action ini diperlukan untuk memanggil redux-nya. Dan jika ingin merubah sebuah action, 
+                kita perlu men-dispatch actionnya
+    4. Setelah membuat "counter.ts", kita membuat file lagi di dalam redux (./redux), bernama "store.ts"
+    5. Di dalam "store.ts" import { configureStore } from "@reduxjs/toolkit" dan action kita yang bernama "slice" dari file "counter.ts"
+        5.1 Kita lanjutkan di dalam "store.ts"
+    6. Setelah selesai dengan file "store.ts", dan telah memasukkan reducer kita, kita memanggil redux kita di "main.tsx"
+        6.1 Di dalam "main.tsx" perlu import { Provider } from 'react-redux' dan "store" dari "store.ts", dimana Provider ini digunakan 
+            untuk membungkus <App /> sehingga kita bisa menggunakan redux
+        6.2 Lanjut di main.tsx
+    7. Buat folder di dalam src bernama reactRedux sebagai tempat untuk menyimpan komponen yang menggunakan redux, dan buat file bernama 
+        "reactRedux.tsx"
+        7.1 Lanjut di "reactRedux.tsx"
+        7.2 Import di App.tsx
 

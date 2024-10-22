@@ -23,6 +23,7 @@ Network Call
 
     Untuk melakukan Network Call, kita membutuhkan Service nya
 
+Form Validation using Formik and Yup
     Instal :
     1. di terminal : npm i axios formik yup
     2. npm i react-router-dom@6

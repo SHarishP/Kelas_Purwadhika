@@ -1,11 +1,12 @@
 // import { useState } from 'react' // Comment to make it Local State in local.tsx
 // import Local from './localState/local'
 // import State from './localState/state'
-import LocalStorage from './localStorage/localStorage'
-import './App.css'
-import SessionStorage from './sessionStorage/sessionStorage';
-import Cookies from './cookies/cookies';
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
+import LocalStorage from "./localStorage/localStorage";
+import SessionStorage from "./sessionStorage/sessionStorage";
+import Cookies from "./cookies/cookies";
+import ReactRedux from "./reactRedux/reactRedux";
+import "./App.css";
 
 function App() {
   // const [count, setCount] = useState<number>(0); // Comment to make it Local State in local.tsx
@@ -17,23 +18,24 @@ function App() {
   const token = sessionStorage.getItem("token");
 
   // Mengambil data dari cookies
-  const [cookies] = useCookies(["nama"])
+  const [cookies] = useCookies(["nama"]);
 
   return (
     <>
-    {user}
-    <LocalStorage />
-    {token}
-    <SessionStorage />
-    {cookies?.nama}
-    <Cookies />
+      {user}
+      <LocalStorage />
+      {token}
+      <SessionStorage />
+      {cookies?.nama}
+      <Cookies />
+      <ReactRedux />
       {/* <Local count={count}/>
       <State count={count}/> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
 
 /* 
   Pembahasan Local State

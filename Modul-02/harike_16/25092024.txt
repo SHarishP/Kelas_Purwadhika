@@ -21,4 +21,5 @@ Cara install tailwind:
     dan masukkan "css.lint.unknownAtRules": "ignore" ;
 7. Untuk memasukkan styling, langsung inline di tag HTML. JANGAN LUPA BACA DOKUMENTASI DI TAILWIND
 
+"./index.html", "./src/**/*.{js,ts,jsx,tsx}" masukkan di tailwin.config.js
 Kak, terus kalo pake tailwind file app.css itu masih ada gunanya ngga? App.css sudah tidak dipakai, kecuali ada yang reusable

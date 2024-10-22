@@ -1,0 +1,105 @@
+Server Side Rendering menggunakan dan pembahasan Next.js
+
+Next.js meruakan sebuah framework untuk react library kita.
+Keunggulan dari dari Next.JS : Server Side Rendering & Static Site Generation
+SSR (Server Side Rendering) : Kemampuan Next.JS untuk merender code HTML yang dibutuhkan di posisi Server, sehingga ketika client 
+                              bisa langsung menggunakan page nya.
+                              Jika client Side rendering, biasanya masih ada blank page dulu, biasanya untuk data Dinamik, 
+                              bagus untuk SEO, 
+Static Site Generation (SSG) : Kemampuan Next.JS untuk membuild code
+
+////////////////////
+// Tambahan Definisi
+////////////////////
+1. Server-Side Rendering (SSR):
+    Pada SSR, halaman web di-render di server setiap kali ada permintaan (request) dari pengguna. Server memproses semua logika, 
+    mengambil data yang dibutuhkan, dan mengirimkan halaman HTML yang sudah lengkap ke browser.
+        Kelebihan:
+            SEO-friendly karena halaman HTML sudah lengkap saat dikirim ke browser, sehingga lebih mudah diindeks oleh mesin pencari.
+            Pengguna bisa melihat konten lebih cepat karena HTML sudah terisi data yang diperlukan.
+        Kekurangan:
+            Setiap kali pengguna meminta halaman baru, server harus memproses ulang dan membuat halaman HTML, yang bisa memperlambat 
+            waktu respons jika banyak permintaan.
+
+2. Static Site Generation (SSG):
+    Pada SSG, halaman web di-render saat proses build (sebelum halaman diakses oleh pengguna). Semua halaman HTML dihasilkan 
+    secara statis dan disimpan di server. Saat ada pengguna yang mengunjungi situs, server mengirimkan halaman HTML yang sudah 
+    dihasilkan.
+        Kelebihan:
+            Cepat dan efisien karena server hanya perlu mengirimkan halaman yang sudah dibuat sebelumnya, tanpa perlu memproses 
+            ulang setiap permintaan. Lebih aman karena tidak ada logika server-side yang harus dieksekusi setiap kali ada request.
+        Kekurangan:
+            Tidak cocok untuk konten yang sering berubah, karena setiap perubahan memerlukan proses build ulang.
+            Jika data dinamis dibutuhkan, perlu tambahan logika untuk mengambilnya di client-side.
+
+
+
+Kenapa pakai Next.JS? Supaya kita bisa SEO (Search Engine Optimization), dengan memainkan Meta Tag
+
+Next JS mempunyai 2 router Pages Router (lama), Next JS yang baru disebut App Router
+Jika App Router, rendering berdasarkan folder, server side render
+Jika Page Router, rendering berdasarkan file nya, client side render
+
+///////////////////////
+// Kenapa Pakai Next.JS
+///////////////////////
+Penggunaan Next.JS memberikan kelebihan dalam pengembangan web aplikasi berbasis REACT sebagai berikut :
+1. Next.JS mempunyai kemampuan "SSR", sehingga meningkatkan performa untuk me-render halaman web. Karena dengan menggunakan Next.JS, 
+    halaman web atau HTML telah dirender sebagian di server, kemudian pre-rendered HTML tersebut dikirim ke client. Hal ini juga dapat
+    meningkatkan kemampuan SEO (Search Engine Optimization)
+2. Next.JS mempunyai kemampuan "SSG". Yaitu kemampuan Next.JS untuk merender website dengan konten yang berat, yang mana konten atau
+    data tsb tidak sering berubah. Sehingga dapat meningkatkan kecepatan website
+3. Next.JS mempunyai kemampuan untuk "memecah code secara otomatis", dimana code dibuat menjadi ukuran yang lebih kecil sehingga
+    dapat dimanage. Hal ini membantu memaksimalkan "loading time" dari aplikasi dengan cara mengirimkan "code yang dibutuhkan saja"
+    ke client.
+4. Next.JS mempunyai kemampuan "File Based Routing", dimana Next.js mempermudah routing website dengan memberikan pendekatan berbasis
+    file dan folder. Kita bisa membuat halaman baru dengan menambahkan komponen react ke dalam folder "pages"
+5. Next.JS "suppport CSS-in JS", dimana Next.JS mempunyai built-in support untuk library CSS-in-JS
+6. Next.JS mempunyai kemudahan dalam integrasi Vercel
+7. Next.JS banyak digunakan dalam industri\
+8. Next.JS bersifat developer friendly 
+
+///////////////////////////////////
+// File Based Routing dalam Next.JS
+///////////////////////////////////
+Next.JS mempunyai 2 jenis Router, yaitu "App Router" dan "Pages Router", 2 jenis ini mempunyai dokumentasinya masing-masing, dan
+cukup berbeda. 
+1. App Router
+    Merupakan jenis router terbaru dari Next.JS yang memungkinkan kita untuk menggunakan kemampuan React seperti Server Component 
+    dan Streaming. App Router, berbasis folder, dan secara default menggunakan "server sider rendering". Jika ingin menggunakan 
+    client side rendering, perlu dituliskan di baris 1 pada file .tsx "use client"
+2. Pages Router
+    Merupakan original router dari Next.JS yang memperbolehkan kita untuk membuat "server-rendered React application". Pages router 
+    berbasis file, dan secara default menggunakan "client side rendering". Jika ingin menggunakan server side, perlu dituliskan di 
+    baris 1 pada file .tsx "use server"
+Di tutorial ini kita menggunakan "App Router"
+
+
+Penggunaan Next.Js 
+1.  Instalasi Next.JS dengan masukan di terminal "npx create-next-app@latest ." => Tambahkan "." supaya langsung instal di folder 
+    tujuan, dan tidak membuat folder baru:
+        Would you like to use TypeScript? No / (Yes)
+        Would you like to use ESLint? (No) / Yes
+        Would you like to use Tailwind CSS? No / (Yes)
+        Would you like to use `src/` directory? No / (Yes)
+        Would you like to use App Router? (recommended) No / (Yes)
+        Would you like to customize the default import alias (@/*)? (No) / Yes
+2.  Setelah instalasi, akan muncul file "next.config.mjs" dan folder "src". File "next.config.mjs" merupakan pengaturan dari Next.JS.
+    Folder "src" berisikan folder "app". Folder "app" berfungsi untuk file page-page kita. Next.JS akan otomatis membuat router 
+    dari folder-folder di dalam "app" tersebut. Contohnya itu "app/about-us" maka di url akan tertulis "localHost:3000/about-us".
+    Apabila ingin membuat komponen yang nantinya akan dimasukkan ke dalam page, buat folder lagi bernama "views/components" dan 
+    "views/pages". Folder "views/pages" ini berfungsi untuk menyatukan semua "components"
+3.  Didalam folder "src/app" terdapat file "layout.tsx" dan "page.tsx". File "layout.tsx" berfungsi sama seperti "main.tsx" pada 
+    library "vite", dimana berfungsi untuk membungkus "children", "pages". File "layout.tsx" hanya boleh satu di dalam folder "app"
+    ex: Misal kita ingin membuat Navbar yang selalu muncul di semua Page kita, kita bisa menaruh Navbar di dalam "layout.tsx".
+    
+    File "page.tsx" berfungsi sebagai tempat menaruh komponen-komponen kita, khususnya untuk page "Home"
+
+
+Di dalam src/app khususkan untuk page nya, untuk komponen, disarankan di dalam src, dan buat folder baru seprti views/components
+
+Di dalam src/app :
+1. ada layout.tsx sama seperti main.tsx pada vite. Berfungsi untuk membungkus page-page 
+2. page.tsx adalah komponen-komponen
+
+pada layout.tsx, tidak terdapat import page.tsx, ini terjadi karena framework Next.JS sudah app router, yang mana langsung bisa membaca pages nya jika di dalam src/app

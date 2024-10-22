@@ -12,6 +12,7 @@ function Users() {
       const { data } = await axios.get(
         "https://66fd3be0c3a184a84d199284.mockapi.io/api/v1/users"
       );
+      console.log({ data });
       setUsers(data);
       dispatch(setUserCount(data.length));
     } catch (err) {
