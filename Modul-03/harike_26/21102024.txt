@@ -1,0 +1,65 @@
+///////////
+// REST API
+///////////
+Prinsip Arsitektural dari REST API:
+1.  Uniform Interface
+    Dengan menggunakan prinsip kesamaan pada komponen interface, kita dapat mempersimple kesulurah sistem dan meningkatkan
+    visibilitas interaksi. Terdapat 4 ketentuan (cek di slide)
+2.  Statelessness (Request dan Response terisolasi)
+    Statelessness berati bahwa setiap HTTP request terjadi complete isolation.
+    Sebuah server tidak pernah bergantung kepada informasti dari request sebelumnya. Jika dibutuhkan informasi dari request sebelumnyam
+    maka di request baru harus mengikutsertakan informasi dari request sebelumnya. 
+3.  Cacheability
+    REST API support caching. Caching adalah menyimpan data sementara. Jadi apabila dibutuhkan informasi, sudah tersedia karena sudah
+    disimpan sebelumnya (ex: foto dan video)
+4.  Layered System
+    Kita mendesign API kita secara terpisah layernya (ex: kita memisah root, controller, business logic, service, data akses layer)
+5.  Code on Demand
+    REST API memungkinkan client untuk menerima scripts atau applets (ex: HTML Script untuk memparsing data tsb)
+
+Benefit REST API (CEK DI SLIDE)
+1. Scalability
+2. FLEXIBILITY
+    RESTful web services support total client-server separation
+3. INDEPENDENCE
+
+Kekurangan REST API:
+1. Kompleksitas
+
+REST API CLIENT Request 
+Main component
+1. URI (Unique Resource Identifier)
+2. METHOD
+3. HTTP Header, Setiap request ada Header
+4. Data
+5. Parameters 
+
+/////////////////////////////
+// Membuat aplikasi ExpressJS
+/////////////////////////////
+1. Install package
+    a. Instal NodeJS di terminal --> npm init --y
+    b. Inisiasi aplikasi package yang dibutuhkan install di dalam devDependencies
+        --> npm i typescript @types/express @types/node nodemon ts-node -D
+    c. Inisiasi aplikasi package yang dibutuhkan 
+        --> npm i dotenv express
+    d. Install Axios (Optional)
+        --> npm i axios
+2.  Ubah "main" di package.json menjadi "./src/server.ts"
+3.  Jalankan di terminal --> npx tsc --init, 
+4.  Masuk ke tsconfig.json, dan uncomment "outdir" untuk menentukan lokasi file setelah di build
+5.  Buat file .env, masuk ke .env
+6.  Buat folder src/config dan file di dalam folder config bernama "env.config.ts / envCopnfig.ts / index.ts" untuk dapat
+    menggunakan .env
+7.  Buat file di dalam folder src bernama "server.ts", next masuk ke file "server.ts"
+8.  Buat folder baru di dalam src bernama "routes" berisikan routes2 dari resource kita. Folder "controllers" berisikan handler2. Dan
+    folder "middleware"
+9.  Di dalam folder routes, buat file "user.route.ts" berfungsi untuk menyimpan router khusus untuk menyimpan resource user.
+    Next masuk ke dalam file "user.route.ts"
+10. Buat file di dalam folder "middleware" bernama "masuk.middleware.ts" .File middleware merupakan router level middleware. 
+    Merupakan function yang mempunyai akses ke Request dan Response. Kemudian masuk ke file "masuk.middleware.ts"
+11. Buat file di dalam folder "middleware" bernama "error.middleware.ts". File ini digunakan untuk error handling. 
+    Kemudian masuk ke file "error.middleware.ts"
+
+Note:
+Jika kita ingin build, maka perlu menambahkan "build": "tsc", di dalam package.json

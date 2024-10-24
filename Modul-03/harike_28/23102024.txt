@@ -1,0 +1,14 @@
+///////////
+// DATABASE
+///////////
+
+Database merupakan tempat penyimpanan data, sehingga kita bisa melakukan login, transaksi, ganti foto profil. Tujuan database selain menyimpan data, juga berfungsi untuk mengambil data. 
+
+Tipe database yang digunakan adalah Relational Databse Management System (RDBMS)
+RDBMS adalah tipe database yang mana data (table) memiliki banyak relasional ke table yang lainnya. 
+
+Sebelum membuat aplikasi, harus membuat design database nya terlebih dahulu. Dicoba dengan data dummy terlebih dahulu. Jika database sudah aman maka bisa lanjut ke design aplikasi 
+
+SQL (Structured Query Language) / (Bahasa Query)
+    SQL digunkan untuk berkomunikasi ke relasional databse kita dan memanipulasi data
+    

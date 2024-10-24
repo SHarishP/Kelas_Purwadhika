@@ -1,0 +1,129 @@
+////////////////////////////////
+// INTRO TO BACK END DEVELOPMENT
+////////////////////////////////
+Back End Development bekerja pada aplikasi di sisi server. Back End Developer memastikan website bekerja dengan baik, fokus kepada
+database, back-end logic, aplication programming interface (APIs), architecture, dan server. Back End Developer menggunakan kode yang
+membantu browser berkomunikasi dengan database, menyimpan, memahami, dan menghapus data. 
+
+Apa yang dimaksud dengan back-end logic, API, architecture, dan server? 
+1.  Aplication programming interface (API)
+    Merupakan mekanisme yang dapat membuat dua komponen software berkomunikasi satu dengan yang lain menggunakan sekumpuluan 
+    'definitions' dan 'protocols'. 
+    Apa yang dimaksud dengan 'definitions' dan 'protocols'?
+2.  Architecture
+    Merupakan 'cara' bagaiamana API dibangun. 
+    a. SOAP (Simple Object Access Protocol)
+        Dengan menggunakan API ini, client dan server bertukan pesan menggunakan XML (Extendcible Markup Language) , SOAP kurang 
+        flexible dan populer di masa lalu.
+    b. RPC (Remote Procedure Calls) 
+        API ini membuat client menyelesaikan 'fucntion / procedure' di dalam Server, dan Server mengembalikan output kembali ke Client
+    c. Websocket
+        Merupakan API modern yang menggunakan JSON object untuk mengirimkan data. API ini melayani komunikasi dua arah antara
+        apliaksi client dan server. Server dapat mengirim 'callback messages' ke 'connected client'. API ini lebih efisien daripada 
+        REST API. Contoh Websocket adalah Payment Gateway. Perlu membuat koneksi terlebih dahulu
+    d. REST API / Representational State Transfer.
+        API ini lebih populer dan flexible. Client mengirim request ke server sebagai 'data'. Kemudian server menggunakan input
+        dari Client tersebut untuk memulai 'internal functions', dan mengembalikan output data kembali ke client. Tidak perlu membuat 
+        koneksi terlebih dahulu. 
+        
+        REST menggunakan sekumpulan function / method seperti GET, PUT, DELETE, FETCH POST, etc, yang dapat digunakan client untuk 
+        mengakses server data. REST menggunakan HTTP method / protocols. 
+
+        Fitur utama dari REST API adalah statelessness. Statelessness berarti server tidak menyimpan data client pada saat ada request
+        (bukan disimpan di database). Misal: Client mengirimkan request1 untuk merubah body, maka request tersebut tidak akan disimpan,
+        dengan kata lain, hanya bisa digunakan 1 kali pakai. Request harus berisikan informasi penuh. Karena REST API tidak mengetahui
+        dan tidak bisa melihat data yang lama. 
+        
+
+
+Pada bootcamp ini digunakan Express JS dalam pembuatan API dengan sistem API yaitu REST API. Dimana Express JS ini digunakan sebagai
+penengah (middleware). 
+Bagaimana cara kerja REST API? 
+Client Side mengirimkan Request, ditangkan oleh API (REST API), dilanjutkan dan diolah di dalam server. 
+
+
+Apakah pembuatan API hanya menggunakan Express JS? 
+Apa itu REST API?
+
+/////////////////////////
+// Introduction to NodeJS 
+/////////////////////////
+Dalam penggunaan Express JS dibutuhkan NodeJS. NodeJS adalah Javascript Engine yang bersifat event-driven, non-blocking I/O model
+sehingga efisien dan ringan. 
+
+
+Membuat API dengan nodeJS:
+1. Inisiasi NodeJS di terminal --> npm init --y
+2. Inisiasi Typescript --> npm i typescript @types/node -D
+3. Inisiasi ts-node dan nodemon --> npm i ts-node nodemon -D
+4. Inisiasi tsconfig --> npx tsc --init
+5. Inisiasi dotenv di terminal --> npm i dotenv
+6. Masuk ke tsconfig.json, dan uncomment "outdir" untuk menentukan lokasi file setelah di build
+7. Masuk ke package.json : 
+    7.1.    Pada package.json "main": "index.js", adalah file yang akan dibaca pertama kali saat apliaksi di running
+    7.2.    Buat folder src dan buat file server-node.ts, dan ubah "main": "index.js" menjadi "main": "./src/server-node.ts"
+    7.3.    Pada package.json, pada object scripts, tambahkan "dev": "nodemon", ini digunakan untuk menggunakan package 'nodemon' yang
+            telah diinstal sebelumnya. Sehingga apabila kita memasukkan 'npm run dev' pada terminal, maka nodemon yang akan berjalan
+8. Buat file di root bernama .env
+    8.1.    Untuk membuat sebuah server di back end, membutuhkan PORT. Dimana setiap aplikasi yang ada di komputer kita hanya bisa 
+            memiliki 1 port, seperti kemarin ada localHost:3000 dan localHost3001, ketika membuka 2 aplikasi sekaligus. 3000 dan 3001
+            ini disebut dengan PORT. 
+    8.2.    Buat PORT=8080 di dalam .env, ini berfungsi untuk merubah-ubah PORT. Karena kadang PORT kita dan PORT tim kita berbeda. 
+        	Jika ada perbedaan PORT, maka bisa langsung merubah PORT di .env ini. 
+9. Buat folder config di dalam src, dan buat file index.ts yang berfungsi untuk mengeluarkan .env. 
+    9.1.    Masuk ke file index.ts
+10. Masuk ke file server-node.ts
+    10.11. Setelah selesai membuat server, jalankan npm run dev di terminal
+11. Setelah selesai membuat server, bisa menggunakan Thunder Client (VSCODE Extention) atau POSTMAN
+    11.1.   Setelah install Thunder Client, masuk ke Thunder Client di taskbar kiri VSCODE, dan klik "New Request" / Gunakan 
+            POSTMAN
+    11.2.   Pastikan method, end point, dan PORT sama dengan yang ada di server-node.tsx dan masukkan URL http://localhost:8080/api
+
+
+///////////////////////////////
+// Membuat API dengan ExpressJS
+///////////////////////////////
+Membuat API dengan ExpressJS buat di dalam folder yang sama dengan NodeJS API untuk perbandingan
+1.  Install ExpressJS di terminal --> npm i express 
+2.  Install Typescript untuk ExpressJS di terminal --> npm i @types/express -D
+3.  Buat file baru di src "server-express.ts"
+4.  Ubah "main" di package.json menjadi "./src/server-express.ts"
+5.  Masuk ke file "server-express.ts"
+note. Jika kita ingin membuat server langsung dengan ExpressJS jangan lupa jalankan point 1-8 pada "Membuat API dengan NodeJS"
+6.  Setelah parsing dengan middleware (cek file "server-express.ts") masuk ke POST man dan ketikkan http://localhost:8080/api/users/5 method PATCH, maka
+    akan muncul 
+    {
+    "message": "Ini Edit Data User",
+    "data": "5"
+    }
+
+note:
+Penggunaan -D berfungsi untuk memberitahu bahwa package ini diinstal pada devDependencies, dan bukan di Dependencies. Karena yang
+nantinya akan ikut di 'build' hanya yang ada di Dependencies. devDependencies hanya berfungsi untuk mendevelop aplikasi, dan tidak
+digunakan dalam aplikasinya. 
+
+ts-node merupakan sebuah package yang memungkinkan kita untuk langsung membaca typescript file tanpa perlu di compile ke javascript
+terlebih dahulu. 
+
+nodemon package untuk memastikan apakah ada perubahan, jika ada perubahan akan langsung merefresh. 
+
+Jika kita ingin melakukan perubahan pada .env, server harus dimatikan terlebih dahulu, setelah edit, dinyalakan kembali 
+
+Express tidak boleh ada di devDependencies
+
+Terdapat peraturan dalam memberikan Endpoint: Cek Slide REST API
+1.  Use nouns to represent resources
+2.  Use forward slash (/) to indicate hierarchical relationships
+3.  Do not use trailing forward slash (/) in URIs (Unique Resource Identifier)
+4.  Use hyphens (-) to improve the readability of URIs
+5.  Do not use underscores ( _ )
+6.  Use lowercase letters in URIs
+7.  Do not use file extensions
+8.  Never use CRUD function names in URIs
+9.  Use query component to filter URI collection
+
+////////////////////////////////////////
+// Tambahan - Fetching data from MockAPI
+////////////////////////////////////////
+1. install axios di terminal --> npm i axios
+2. masuk ke file server-express.ts
