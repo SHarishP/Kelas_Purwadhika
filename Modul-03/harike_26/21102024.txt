@@ -3,12 +3,10 @@
 ///////////
 Prinsip Arsitektural dari REST API:
 1.  Uniform Interface
-    Dengan menggunakan prinsip kesamaan pada komponen interface, kita dapat mempersimple kesulurah sistem dan meningkatkan
-    visibilitas interaksi. Terdapat 4 ketentuan (cek di slide)
+    Dengan menggunakan prinsip kesamaan pada komponen interface, kita dapat mempersimple kesulurah sistem dan meningkatkan visibilitas interaksi. Terdapat 4 ketentuan (cek di slide)
 2.  Statelessness (Request dan Response terisolasi)
     Statelessness berati bahwa setiap HTTP request terjadi complete isolation.
-    Sebuah server tidak pernah bergantung kepada informasti dari request sebelumnya. Jika dibutuhkan informasi dari request sebelumnyam
-    maka di request baru harus mengikutsertakan informasi dari request sebelumnya. 
+    Sebuah server tidak pernah bergantung kepada informasti dari request sebelumnya. Jika dibutuhkan informasi dari request sebelumnya maka di request baru harus mengikutsertakan informasi dari request sebelumnya. 
 3.  Cacheability
     REST API support caching. Caching adalah menyimpan data sementara. Jadi apabila dibutuhkan informasi, sudah tersedia karena sudah
     disimpan sebelumnya (ex: foto dan video)

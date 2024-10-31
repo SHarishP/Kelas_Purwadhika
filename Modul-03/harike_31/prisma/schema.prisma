@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Datasource digunakna supaya prisma dapat mengakses database kita
+datasource db {
+  // 1. Ubah provider yang awalnya "postgre" menjadi "mysql"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// 1. Membuat table bernama "branch"
+  // "model" adalah code milik prisma untuk membuat table database pada mysql
+  model Branch {
+    id        Int       @id @default(autoincrement())
+    name      String    @db.VarChar(25)
+    location  String    @db.VarChar(40)
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+  }
+
+// 2. Setelah membuat table, masukkan di terminal : npx prisma migrate dev. Ini digunakan untuk menjalankan prisma schema kita menjadi query untuk memodifikasi database kita. Biasakan untuk migrate untuk setiap perubahan kita
+// 2.1 Pada : "Enter a name for the new migration", masukkan "create_table_branch". Kemudian akan muncul file migration.sql. Dilarang merubah migration.sql secara manual di dalam migration.sql, karena dapat mengakibatkan dispuute antara prisma dengan migration 
+
+// Standar penamaan table : tidak boleh menggunakan special charachter, menggunakan PascalCase dalam penamaan table, penamaan table / model harus singular. 
+
+// Kak mau tanya, di name, di schema.prisma, kenapa harus ditulis String ya? Sedangkan di Workbench kemarin, untuk key "title" langsung tulis varChar. Apa kita harus selalu tulis tipe data di Prisma ya kak? Atau ada pengaruhnya karena kita pakai typescript jadi harus ada datatype checker ya kak? 
+
+// Karena data tipe seperti "String", dibutuhkan prisma untuk dapat mentranslate dari SQL ke JS, begitu juga sebaliknya

@@ -1,0 +1,28 @@
+Pembahasan Headless CMS & Exercise
+CMS (Content Management System) merupakan isi dari website kita
+    merupakan sebuah software yang dapat memmbant kita untuk mencreate atau mendefine content di website kita.
+    Kita juga dapat mengupdate konten, merubah konten, tanpa kita tau code dari website nya. Sehingga pegawai admin pun bisa
+    mengupdate konten di website kita
+
+    Traditional CMS & Headless CMS
+    Traditional CMS : Mengimplementasikan sistem monolotik, Front End dan Back End, Contoh : Wordpress
+
+    Headless CMS : Kita membuat konten yang terpisah dengan back end maupun aplikasi kita, sama seperti ketika kita memakai API.
+                    Dengan kata lain sudah tidak monolotik lagi
+    Aplikasi yang kita gunakan adalah Contentful CMS
+
+    1. Configure content kita di Contentful.com, dan dapatkan API nya
+    2. Setelah install next.js, install "npm i contentful"
+    3. Kita abuat file baru dengan ".env", file ini untuk menyimpan data-data senstive seperti "Content Delivery API - access token" yang ada di Contentful
+        3.1 Secara default, next.js dapat membaca file ".env", sehingga apabila terdapat perubahan content, bisa langsung terupdate
+        3.2 Tata cara penulisan di file ".env" dan di dalam next.js biasanya "NEXT_PUBLIC_(nama cms)_(nama API)"
+    4. Buat contentfulClient.ts , cek ke filenya
+    5. install npm i @contentful/rich-text-react-renderer supaya bisa mengconvert rich text ke next js
+
+
+Q:
+Kak, mau tanya. Penggunaan space dan process.env di contentfulClient.ts ini apa ada dokumentasinya ya? Trus object "process" ini punya properti lain selain .env ya kak?
+https://www.npmjs.com/package/contentful
+
+Pertanyaan kedua. Apa space dan accessToken ini adalah property default dari createClient ya kak? Trus apa ada property lainnya ya kak?
+Iya, merupakan default properti dari createClient, bisa akses https://www.npmjs.com/package/contentful

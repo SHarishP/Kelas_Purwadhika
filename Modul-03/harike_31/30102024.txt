@@ -1,0 +1,31 @@
+//////////////////////////////////
+// ORM - Object Relational Mapping
+//////////////////////////////////
+
+ORM adalah node package untuk memudahkan kita dalam membuat querry database dalam bahasa pemrograman yang kita inginkan. ORM bekerja ditengah antara database kita dan cloud/server kita. Untuk kasus kali ini kita menggunakan prisma / typeDB
+
+Karena kita menggunakan ORM, kita bisa langsung membuat table scheme database langsung dari VSCode kita
+
+// Cara penggunaan
+1.  Instal Prisma ke dalam project kita : npm i prisma
+2.  Jalankan di terminal : npx prisma init, untuk mengenerate scheme, dan .env. Maka akan muncul folder "prisma" dan file "schema.prisma". Kemudian, di file .env kita juga akan berubah (cek file .env)
+3.  Didalam file .env, ubah DATABSE_URL menjadi URL database kita dengan ketentuan penulisan sbb (untuk mySQL Database): {provider}://{user}:{password}@{host}:{port}/{database_name} : DATABASE_URL="mysql://root:{password}@127.0.0.1:3306/jcwdol16_prisma"
+4. Open window MySQL Workbench dan buat database baru sesuai "database_name" di .env, yaitu "jcwdol16_prisma"
+4.1 Masukkan querry code : create database jcwdol16_prisma; -> run query
+5.  Pada vsCode, masuk ke extention, dan iinstall Prisma Extention. Extention ini digunakan untuk membantu penulisan kita di Prisma nantinya. 
+6. Masuk ke file : "schema.prisma" dan ubah provider menjadi "mysql"
+    6.2. Setelah membuat table, masukkan di terminal : npx prisma migrate dev. Ini digunakan untuk menjalankan prisma schema kita menjadi query untuk memodifikasi database kita. Biasakan untuk migrate untuk setiap perubahan kita
+    6.3 Pada : "Enter a name for the new migration", masukkan "create_table_branch". Kemudian akan muncul file migration.sql. Dilarang merubah migration.sql secara manual di dalam migration.sql, karena dapat mengakibatkan dispuute antara prisma dengan migration 
+7. Untuk dapat menggunakan Table yang telah kita buat menggunakan Prisma, kita perlu menggunakan prisma client.
+    7.1 Install prisma client di terminal : npm i @prisma/client
+8. Buat routes untuk masing-masing table
+    8.1 Buat folder routes dan file branch.route.ts masuk ke file tsb
+    8.2 Buat folder controller dan file branch.controller.ts, masuk ke file tsb
+
+
+
+Note :
+Kita bisa menggunakan Prisma untuk database MySQL, Postgree
+Ketika kita sudah install prisma, kita tidak perlu install MySQL2
+
+Standar penamaan table : tidak boleh menggunakan special charachter, menggunakan PascalCase dalam penamaan table, penamaan table / model harus singular. 

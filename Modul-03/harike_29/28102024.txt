@@ -1,0 +1,4 @@
+Advanced Database
+
+Kak, di tabel terakhir, kenapa kita gak pake enum ya kak?
+Jadi misal Student_ID : 1, Program ID 
