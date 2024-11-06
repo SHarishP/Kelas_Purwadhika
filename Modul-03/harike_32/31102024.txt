@@ -1,0 +1,12 @@
+Lanjutan Pembelajaran Prisma. Cek Day 31
+
+Untuk buat branch baru / pengerjaan task baru
+1. pindah ke branch main (git checkout main)
+2. git pull
+3. buat branch baru dan pindah ke branch baru (git checkout -b 1.1 main)
+
+Ketika ada perubahan atau merging ke branch main
+1. pindah ke branch main (git checkout main)
+2. git pull
+3. pindah ke branch yang sedang dikerjkan ex.(git checkout 1.1)
+4. merge branch main terbaru ke branch yang sedang dikerjakan (git merge main)

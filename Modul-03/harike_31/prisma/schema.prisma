@@ -19,16 +19,46 @@ datasource db {
   // "model" adalah code milik prisma untuk membuat table database pada mysql
   model Branch {
     id        Int       @id @default(autoincrement())
-    name      String    @db.VarChar(25)
+    name      String?   @db.VarChar(25)
     location  String    @db.VarChar(40)
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
+    manager   Manager?
   }
 
 // 2. Setelah membuat table, masukkan di terminal : npx prisma migrate dev. Ini digunakan untuk menjalankan prisma schema kita menjadi query untuk memodifikasi database kita. Biasakan untuk migrate untuk setiap perubahan kita
 // 2.1 Pada : "Enter a name for the new migration", masukkan "create_table_branch". Kemudian akan muncul file migration.sql. Dilarang merubah migration.sql secara manual di dalam migration.sql, karena dapat mengakibatkan dispuute antara prisma dengan migration 
 
 // Standar penamaan table : tidak boleh menggunakan special charachter, menggunakan PascalCase dalam penamaan table, penamaan table / model harus singular. 
+
+// 3. Membuat relational table
+model Manager {
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(30)
+  branchId  Int     @unique
+  branch    Branch  @relation(fields: [branchId], references: [id])
+}
+
+///////////////////////////////////////////////////
+// Harike_33 Membuat Authorization & Authentication
+///////////////////////////////////////////////////
+// 33.1. Menambahkan database
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String
+  // 33.20 Tambahkan line dibawah berikut untuk JSONWeb Token next migrate, dan masuk ke env
+  role      String  @default("user")
+}
+// 33.2 Lakukan npx prisma migrate dev
+// 33.3 Buat endpoint/route/handler baru dengan file bernama "auth.route.ts"
+
+// Note :
+// @unique : membuat data di database yang tidak boleh sama
+
+
+
+
 
 // Kak mau tanya, di name, di schema.prisma, kenapa harus ditulis String ya? Sedangkan di Workbench kemarin, untuk key "title" langsung tulis varChar. Apa kita harus selalu tulis tipe data di Prisma ya kak? Atau ada pengaruhnya karena kita pakai typescript jadi harus ada datatype checker ya kak? 
 

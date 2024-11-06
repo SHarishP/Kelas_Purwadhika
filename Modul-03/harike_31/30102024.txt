@@ -18,6 +18,7 @@ Karena kita menggunakan ORM, kita bisa langsung membuat table scheme database la
     6.3 Pada : "Enter a name for the new migration", masukkan "create_table_branch". Kemudian akan muncul file migration.sql. Dilarang merubah migration.sql secara manual di dalam migration.sql, karena dapat mengakibatkan dispuute antara prisma dengan migration 
 7. Untuk dapat menggunakan Table yang telah kita buat menggunakan Prisma, kita perlu menggunakan prisma client.
     7.1 Install prisma client di terminal : npm i @prisma/client
+    7.2 Jika ingin menjalankan membuat table di sql dengan prisma, masukkan di terminal : npx prisma migrate dev
 8. Buat routes untuk masing-masing table
     8.1 Buat folder routes dan file branch.route.ts masuk ke file tsb
     8.2 Buat folder controller dan file branch.controller.ts, masuk ke file tsb
@@ -29,3 +30,7 @@ Kita bisa menggunakan Prisma untuk database MySQL, Postgree
 Ketika kita sudah install prisma, kita tidak perlu install MySQL2
 
 Standar penamaan table : tidak boleh menggunakan special charachter, menggunakan PascalCase dalam penamaan table, penamaan table / model harus singular. 
+
+//  Catatan Dari tanggal 31/10/2024
+Prisma support Pagination. Pagination berfunsgi untuk mengambil data dari database secara bertahap (10-10, atau lebih), sehingga tidak membuat client jadi ngelag
+

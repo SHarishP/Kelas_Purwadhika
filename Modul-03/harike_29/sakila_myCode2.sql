@@ -6,6 +6,7 @@ select * from rental order by rental_id asc;
 select * from payment order by rental_id desc; 
 select * from payment where rental_id = 16049;
 
+--  Transaksi adalah serangkaian operasi yang dieksekusi sebagai satu kesatuan, sehingga perubahan data tidak akan diterapkan ke database sampai semua operasi di dalam transaksi tersebut berhasil dijalankan.
 start transaction;
 
 select @rentalID=max(rental_id) from rental;

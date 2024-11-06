@@ -1,0 +1,150 @@
+/////////////////////////////////
+// Authentication & Authorization
+/////////////////////////////////
+Authentication adalah proses verifikasi identitas pengguna atau sistem, memastikan bahwa mereka adalah siapa yang mereka klaim. Contohnya adalah saat login dengan username dan password.
+Authorization adalah proses pemberian izin akses ke sumber daya atau fitur tertentu setelah pengguna berhasil diotentikasi. Ini menentukan apa yang bisa dilakukan atau diakses oleh pengguna berdasarkan perannya atau izin yang diberikan.
+Singkatnya:
+Authentication: Siapa kamu?
+Authorization: Apa yang boleh kamu lakukan?
+
+// Jenis-Jenis Authentication yang umum digunakan :
+1.  Password And Security Questions
+    Pengguna memverifikasi identitasnya menggunakan username dan password. Ini adalah metode paling sederhana tetapi bisa rentan terhadap serangan jika password lemah atau mudah ditebak.
+2.  Physical devices such as USB security tokens and mobile phones
+    Memverifikasi perangkat yang digunakan pengguna. Jika perangkat dianggap terpercaya, pengguna dapat melewati beberapa langkah verifikasi tambahan.
+3.  Biometric authentication mechanism
+    Menggunakan karakteristik fisik pengguna, seperti sidik jari, pengenalan wajah, retina, atau suara. Metode ini menjadi populer karena mudah dan aman, meskipun memerlukan perangkat khusus.
+
+// Jenis-jenis Authorization yang umum digunakan :
+1.  Access Control List (ACLs)
+    ACL adalah daftar aturan yang menentukan siapa yang bisa mengakses sumber daya tertentu dalam sistem. Aturan ini berdasarkan izin yang telah diberikan, seperti "allow" (izinkan) atau "deny" (tolak). Jadi, ACL berfungsi seperti daftar yang mengatur apakah pengguna atau layanan tertentu bisa mengakses sumber daya.
+2.  Level Otorisasi Pengguna
+    Di dalam sistem, pengguna sering dikelompokkan berdasarkan tingkat otorisasinya, misalnya:
+        a.  Pengguna biasa atau general users memiliki akses terbatas, terutama hanya untuk operasi dasar atau akses informasi.
+        b.  Super users atau administrator memiliki izin lebih tinggi untuk melakukan perubahan signifikan, termasuk yang berkaitan dengan keamanan.
+
+////////////////////////////////////////////////////////////////////////////////
+//  Langkah-langkah dalam penggunaan Authentication & Authorization Purwadhika :
+1.  Digunakan file harike31
+2.  Buat model database untuk menyimpan username dan password user menggunakan file "schema.prisma"
+3.  Setelah sampai langkah 33.10.2, jalankan server (npm run dev), masuk ke thunderclient, dan klik "New Request"
+    3.1 Tes route register dengan memasukkan url localhost:8080/auth-management/register dan ubah method menjadi "POST"
+    3.2 Masuk ke Tab Body, dan masukkan JSON Content
+        {
+            "email" : "test@gmail.com",
+            "password" : "asd123"
+        }
+    3.3 Klik Send. Jika berhasil akan muncul Status 200, dan di tab Respnse sebagai berikut :
+        {
+            "message" : "success",
+            "data" : {
+                "id" : 1,
+                "email": "test@gmail.com",
+                "password" : "asd123"
+            }
+        }
+4.  Test Case Jika email sudah ada :
+    4.1 Tes route register dengan memasukkan url localhost:8080/auth-management/register dan ubah method menjadi "POST"
+    4.2 Masuk ke Tab Body, dan masukkan JSON Content
+        {
+            "email" : "test@gmail.com",
+            "password" : "asd123"
+        }
+    4.3 Klik Send. Dikarenakan email sudah ada (telah di register sebelumnya pada poin 3), maka akan muncul di tab response :
+        {
+            "message" : "Email sudah ada"
+        }
+5. Pada saat authentication, password masih plain (cek di database), dan sangat berbahaya. Maka, password perlu di enkripsi dengan merubah password menjadi random teks. Tetapi user masih bisa login dengan password yang telah diregister sebelumnya (asd123). Pada tutorial ini, digunakan enkripsi password menggunakan node packagae bernama "bcrypt". Digunakan package "bcrypt" karena package ini sudah memiliki banyak pengguna, jarang terjadi masalah, dan menggunakan algoritma Blowfish Cypher yang belum pernah tertembus.  
+    5.1.  Masukkan ke terminal : npm i bcrypt
+    5.2.  Masukkan ke terminal : npm i jsonwebtoken
+    5.3.  Masukkan ke terminal : npm i -D @types/jsonwebtoken
+    5.4.  Masukkan ke terminal : npm i -D @types/bcrypt
+6.  Buat enkripsi password, ikuti langkah-langkah, dan masuk ke auth.controller
+7.  Setelah sampai langkah 33.14, jalankan server (npm run dev), masuk ke thunderclient, dan klik "New Request"
+    3.1 Tes route register dengan password yang telah di enkripsi dengan memasukkan url localhost:8080/auth-management/register dan ubah method menjadi "POST"
+    3.2 Masuk ke Tab Body, dan masukkan JSON Content
+        {
+            "email" : "test2@gmail.com",
+            "password" : "asd123"
+        }
+    3.3 Klik Send. Jika berhasil akan muncul Status 200, dan di tab Respnse sebagai berikut :
+        {
+            "message" : "success",
+            "data" : {
+                "id" : 2,
+                "email": "test2@gmail.com",
+                "password" : "aqipuoghojkasbnq9uighoiqyboivfy09q890qvgy7590" --> ini hash password/bisa beda-beda
+            }
+        }
+8.  Membuat Function "Login", masuk ke auth.controller.ts. Setelah selesai membuat function login dimulai pada 33.15 sampai 33.19. Masuk ke thunderclient dan klik "New Request"
+    8.1 Tes Route login dengan dengan memasukkan url localhost:8080/auth-management/login dan ubah method menjadi "POST"
+    8.2 Masuk ke Tab Body, dan masukkan JSON Content
+        {
+            "email" : "test2@gmail.com",
+            "password" : "asd123"
+        }
+    8.3 Klik Send. Jika berhasil akan muncul Status 200, dan di tab Respnse sebagai berikut :
+        {
+            "message" : "success",
+            "data" : {
+                "id" : 2,
+                "email": "test2@gmail.com",
+                "password" : "aqipuoghojkasbnq9uighoiqyboivfy09q890qvgy7590" --> ini hash password/ bisa besa-beda
+            }
+        }
+9.  Membuat JSON Web Token, tambahkan column "role" pada table User di file schema.prisma.
+10. Setelah mengikuti langkah-langkah pembuatan JSON Web Token sampai dengan langkah ke 33.27. Lakukan hal berikut :
+    10.1.Tes JSON Web Token dengan dengan memasukkan url localhost:8080/auth-management/login dan ubah method menjadi "POST"
+    10.2 Masuk ke Tab Body, dan masukkan JSON Content
+        {
+            "email" : "test2@gmail.com",
+            "password" : "asd123"
+        }
+    10.3 Klik Send. Jika berhasil akan muncul Status 200, dan di tab Respnse sebagai berikut :
+        {
+            "message" : "success",
+            "access_token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzA3OTg0MjUsImV4cCI6MTczMDg4NDgyNX0.egd9H6raJT6KhQiaRLIrpzdaeJi7feFBA7Hpik3nPK8" --> contoh akses token
+        }
+    10.4 Copy acces token dari tab Response, masuk ke jwt.io di browser, dan paste access_token untuk melihat Payload 
+11. Membuat Authorization untuk pengecekan valid tidak nya role dan valid tidaknya token dengan cara pertama mengextend request dengan user. Dengan cara membuat file baru bernama "custom.d.ts", kemudian masuk ke file tsb 
+12. Setelah selesai sampai dengan langkah 33.42, masuk ke thunderclient
+    12.1.Tes VerifyToken sebelum masuk ke branches dengan melakukan login terlebih dahulu untuk mengambil access_token dengan dengan memasukkan url localhost:8080/auth-management/login dan ubah method menjadi "POST"
+    12.2 Masuk ke Tab Body, dan masukkan JSON Content
+        {
+            "email" : "test2@gmail.com",
+            "password" : "asd123"
+        }
+    12.3 Klik Send. Jika berhasil akan muncul Status 200, dan di tab Respnse sebagai berikut :
+        {
+            "message" : "success",
+            "access_token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzA3OTg0MjUsImV4cCI6MTczMDg4NDgyNX0.egd9H6raJT6KhQiaRLIrpzdaeJi7feFBA7Hpik3nPK8" --> contoh akses token
+        }
+    12.4 Masukkan url localhost:8080/auth-management/login dan ubah method menjadi "POST"
+    12.5 Pilih Tab Header, masukkan nama header "Authorization" dan pada value, masukkan "Bearer [access_token]", klik Send
+    12.6 Jika berhasil akan muncul 
+            {
+                "message": "Success",
+                "data": [
+                    {
+                    "id": 31,
+                    "name": "Online",
+                    "location": "Online",
+                    "createdAt": "2024-10-31T14:20:43.903Z",
+                    "updatedAt": "2024-10-31T14:20:43.903Z"
+                    }
+                ]
+            }
+13. Membuat Verify Admin, dimana hanya admin yang boleh menambahkan branch. Masuk kembali ke auth.middleware.ts Lalu test
+14. Install Package Cors supaya server/API dapat digunakan oleh domain lain:
+    14.1 npm i cors;
+    14.2 npm i -D @types/cors
+    14.3 Masukkan ke server.ts
+
+Membuat authentication
+1. Buat file custom.d.ts, masuk ke file tsb
+
+// Bcrypt
+Penggunaan bcrypt adalah dengan merubah password menjadi Hashing / randomtext. Kemudian dilakukan sorting untuk mengimprove security
+
+// JSON Web Token
+JSON WEB Token adalah cara untuk mentransmiit / bertukar informasi. Dimana informasi tersebut telah terauthentikasi / tertanda tangan. JSON Web Token pertama kali dibuat saat pertama kali login. Pada saat client login, client akan mengirimkan login ke server, kemudian server merespon JWT / token yang sudah terauthentikasi dan disimpan di client (cookies / local storage). Berguna ketika user ingin mengakses data admin, client hanya perlu mengirimkan role dari user tanpa harus login ulang
