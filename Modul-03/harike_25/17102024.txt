@@ -62,14 +62,10 @@ Membuat API dengan nodeJS:
 7. Masuk ke package.json : 
     7.1.    Pada package.json "main": "index.js", adalah file yang akan dibaca pertama kali saat apliaksi di running
     7.2.    Buat folder src dan buat file server-node.ts, dan ubah "main": "index.js" menjadi "main": "./src/server-node.ts"
-    7.3.    Pada package.json, pada object scripts, tambahkan "dev": "nodemon", ini digunakan untuk menggunakan package 'nodemon' yang
-            telah diinstal sebelumnya. Sehingga apabila kita memasukkan 'npm run dev' pada terminal, maka nodemon yang akan berjalan
+    7.3.    Pada package.json, pada object scripts, tambahkan "dev": "nodemon", ini digunakan untuk menggunakan package 'nodemon' yang telah diinstal sebelumnya. Sehingga apabila kita memasukkan 'npm run dev' pada terminal, maka nodemon yang akan berjalan
 8. Buat file di root bernama .env
-    8.1.    Untuk membuat sebuah server di back end, membutuhkan PORT. Dimana setiap aplikasi yang ada di komputer kita hanya bisa 
-            memiliki 1 port, seperti kemarin ada localHost:3000 dan localHost3001, ketika membuka 2 aplikasi sekaligus. 3000 dan 3001
-            ini disebut dengan PORT. 
-    8.2.    Buat PORT=8080 di dalam .env, ini berfungsi untuk merubah-ubah PORT. Karena kadang PORT kita dan PORT tim kita berbeda. 
-        	Jika ada perbedaan PORT, maka bisa langsung merubah PORT di .env ini. 
+    8.1.    Untuk membuat sebuah server di back end, membutuhkan PORT. Dimana setiap aplikasi yang ada di komputer kita hanya bisa memiliki 1 port, seperti kemarin ada localHost:3000 dan localHost3001, ketika membuka 2 aplikasi sekaligus. 3000 dan 3001 ini disebut dengan PORT. 
+    8.2.    Buat PORT=8080 di dalam .env, ini berfungsi untuk merubah-ubah PORT. Karena kadang PORT kita dan PORT tim kita berbeda. Jika ada perbedaan PORT, maka bisa langsung merubah PORT di .env ini. 
 9. Buat folder config di dalam src, dan buat file index.ts yang berfungsi untuk mengeluarkan .env. 
     9.1.    Masuk ke file index.ts
 10. Masuk ke file server-node.ts

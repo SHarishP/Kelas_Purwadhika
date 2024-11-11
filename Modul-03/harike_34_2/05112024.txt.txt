@@ -1,0 +1,123 @@
+simple-authentication-authorization-example-master
+
+// Langkah-langkah penggunaan simple-authentication-authorization-example-master :
+1. Lakukan npm install untuk masing-masing aplikasi web dan api
+2. Buat file .env di folder web, dan masuk ke file tsb
+3. Buat file .env di folder api dan masuk ke file tsb
+4. Setelah memasukkan database URL, buat table pada database dengan memasukkan ke terminal api : npx prisma migrate dev
+5. Pada repo ini, API masih menggunakan function API bisa cek ke file "server.ts"
+    5.1. Pada file "server.ts" terdapat package bernama "cors" (Cross Origin Restriction Policies), berfungsi supaya domain lain bisa mengakses server kita. Sebagai contoh : yaitu localhost:3030 (frontend kita) dan localhost:8080 (backend kita) berbeda domain. 
+    5.2. Penggunaan "cors" di repo ini juga berfungsi sebagai "third party middleware", dimana semua route akan melewati middleware ini. 
+    5.3. Perlu diingat bahwa, apabila kita memiliki website dan api yang mana website kita perlu mengakses api kita, dibutuhkan package "cors" yang dinstal di api.
+6.  File "custom.d.ts" pada api berfungsi untuk membuat type dan mendeclare bahwa request kita dapat menerima user (req.user) dan merupakan extent dari request express. 
+7.  File "auth.routes.ts" berfungsi sebagai endpoint.
+8.  File "auth.controller.ts" digunkan sebagai controller dari endpoint
+9.  Masuk ke MySQL Workbench, cek table role, apabila belum terdapat data admin dan user, buat data secara manual di dalamnya. 
+10. Jalankan aplikasi api dan buka postman.
+    10.1. Di Postman, tes endpoint register dengan cara masukkan URL sesuai port dari aplikasi api kita, contoh "http://localhost:8080/auth/register" dan ubah method menjadi "post". Serta masukkan data berikut di body:
+        {
+        "email" : "test@gmail.com",
+        "name" : "test",
+        "password" : "!Asd123"
+        }
+    10.2. Apabila berhasil, maka akan muncul response sebagai berikut :
+        {
+           "message": "success",
+            "data": {
+                "id": 1,
+                "name": "test",
+                "email": "test@gmail.com",
+                "password": "$2b$10$AUTBaDQzHA9cY4yxMrRhEuqbbFxIPbSllVv22wXJge6CjU/uLOBzS",
+                "roleId": 1
+            }
+        }
+    10.3. Tambahan saja. Di "auth.controller.ts", pada controller Register. Kita tidak boleh mengirimkan ulang password. Maka terdapat perubahan. Cek (10.3 di dalam "auth.controller.ts")
+11. Tes login:
+    11.1. Di Postman, tes endpoint Login dengan cara masukkan URL sesuai port dari aplikasi api kita, contoh "http://localhost:8080/auth/login" dan ubah method menjadi "post". Serta masukkan data berikut di body:
+        {
+            "email" : "test@gmail.com",
+            "password" : "!Asd123"
+        }
+    11.2. Apabila berhasil, maka akan muncul di response, pada tab Body :
+        {
+            "message": "success"
+        }
+    11.3. Serta pada Response, dan di tab Cookies, muncul access_token dan value. Sebagai contoh :
+        access_token         feiopqhgoiagkpniopauerr121432knskrbwkamkjahbviuahg --> Hanya contoh
+    11.4. Tambahan saja berdasarkan video. Setelah mendapatkan access_token, ubah "const newUser = await prisma.user..." menjadi "await prisma.user ..." saja, karena kita tidak mengembalikan nilai apapun. Cek (11.4) di dalam "auth.controller.ts"
+12. Masuk ke file "register-form.tsx" di dalam folder "web/src/views/pages/register/components". File ini merupakan form register yang menggunakan package formik. Di dalam file "register-form.tsx" juga terdapat package bernama Swal from "sweetalert2" yang merupakan package untuk memberikan notifikasi popup
+13. Jalankan web di terminal kedua
+14. Uji coba Register pada web dengan mengklik register dengan memasukkan :
+    Name : test1,
+    Email : test1@gmail.com
+    Password : !asd123
+15. Pembahasan flow ketika klik submit register, cek file "register-form.tsx" langkah 15.1 s/d 15.8
+16. Pada file "login-form.tsx"  di dalam folder "web/src/views/pages/login/components". File ini merupakan form login yang menggunakan package formik. Pembahasan flow login cek file "login-form.tsx" dari langkah 16.1 s/d 16.20
+17. Tambahan untuk role user, cek file "auth.controller.ts" dimulai dari langkah 17.1 s/d 17.3
+18. Perlu diperhatikan bahwa di dalam "controller.ts" tidak boleh ada logic di dalamnya, akan dibahas di pertemuan berikutnya
+19. Pembahasan Middleware pada web jika ingin membuka "dashboard" dan admin. Dimana, jika ingin membuka "dashboard" hanya dibutuhkan login saja, sedangkan jika ingin membuka "admin" (cek navbar di Web), dibutuhkan login, dan role merupakan "admin". Apabila telah login dan role merupakan user, hanya bisa membuka "dashboard" dan tidak akan bisa berpindah halaman ke "admin". Tetapi jika rolenya adalah admin, maka bisa berpindah page ke "admin"
+    19.1. Untuk code ini, jika ingin merubah role menjadi admin, perlu merubah secara manual di MySQL Workbench
+    19.2. Login dengan role "users"
+    19.3. Flow dari "dashbroad" adalah, setelah login dan ketika klik "dashboard" di navbar, lanjut buka file "index.ts" di "web/src/views/pages/dashboard" dan ikuti langkah 19.4 s/d 19.11
+20. Terdapat cara lagi untuk mengirim token sehingga bisa mengakses admin. Buka file "index.ts" di dalam folder "web/src/views/pages/admin" Ikuti langkah 20.1 s/d 
+
+// Pembahasan pada harike 35 tanggal 06-11-2024
+Pembahasan : Data Validation, File Uploader, dan Emailer. File Uploader sampai storage, memory storage belakangan.
+21. Data Validation
+    Terdapat Data Validation pada FrontEnd dan BackEnd, apabila di FrontEnd (berdasarkan bootcamp ini) digunakan Formik yang memvalidasi input-input dari user yang akan dikirimkan ke server melalui API, validasi di FrontEnd dapat menggunakan package YAP untuk skema validasi. Sedangkan di BackEnd dapat menggunakan package yang bernama Express Validator. Dimana Express Validator ini berbentuk middleware.  
+    21.1. Untuk menggunakan Express-Validator, masuk ke aplication API, dan masukkan di terminal: npm i express-validator.
+    21.2. Buat folder baru bernama "validations" di dalam folder "api/src/middlewares" dan buat file "auth.validation.ts". Kemudian ikuti langkah 21.3. s/d 21.13
+    21.14. Setelah selesai. Jalankan kembali application API dan tes register jika gagal / validasi tidak terpenuhi. Masukkan URL "http://localhost:8080/auth/register" dan buat method menjadi POST. Kemudian masukkan di body :
+        {
+            "email" : "test@gmail.com",
+            "name" : "test",
+            "password" : ""
+        }
+    21.15. Dikarenakan test ini untuk mengetes kegagalan validasi, maka akan muncul di response.body :
+        {
+            "message": "Password is required"
+        }
+22. Maka sampai dengan saat ini, kita mempunyai 3 proteksi, yaitu frontEnd Validation, backEnd Validation, dan email harus unique.
+23. Membuat validation untuk login, masuk ke "auth.validation.ts" di dalam folder "api/src/middlewares" dan ikuti langkah 23.1 s/d
+24. FileUpload berfungsi untuk penyimpanan file, contohnya foto. Foto disimpan di dalam server (API) dan bukan di database. Karena database tidak menyimpan blok image. Database tidak menyimpan file berbentuk blok, seperti blok image, dikarenakan dapat membuat database menjadi berat. Maka dari itu penyimpanan image di simpan di disk storage server. Jika image bisa di akses melalui multiple server, maka image disimpan di penyimpanan cloud block storage. 
+25. Membuat penyimpanan picture di server atau API
+    25.1. Install di terminal API : npm i multer
+    25.2. Intsall di terminal API : npm i -D @types/multer
+    25.3. Multer sama seperti Middleware yang berfungsi menghandle "home data" dan bukan JSON. "Home data" digunakan untuk upload file. Pada Request.body mengambil JSON, sehingga kita melakukan parse JSON. Home Data dan JSON merupakan tipe data yang berbeda. Maka dari itu, package Multer akan memparse "Home Data" menjadi JSON. Sehingga apabila upload file seperti foto, tipe nya adalah home data, dan harus diapasang Multer.
+    25.4. Buat file "uploader.ts" di dalam folder "api/src/utils" dan masuk ke file tersebut. Ikuti langkah 25.5 s/d 25.20
+    25.21. Jalankan aplication api, masuk ke postman, masukkan url localhost:8080/auth/upload dengan method POST. Pada tab Body, masuk ke "form-data".
+    25.23. Tambahkan key sesuai dengan nama pada .single pada langkah 25.14. Dalam case ini adalah key bernama "file". Ubah dari tipe key menjadi "file", dan kemudian upload file pada value
+    25.24. Tambahkan key lagi bernama "name" dan berikan value. Di case ini value adalah "test" dan klik send
+    25.25. Apabila berhasil maka akan muncul Response : File Uploaded 
+    25.26. Dikarenakan kita melakukan console.log untuk file, name, dan defaultDir, maka akan muncul di terminal :
+            console.log(defaultDir) : 
+                D:\Purwadhika\Kelas_Purwadhika\Modul-03\harike_34\api\public
+            console.log(originalNameParts);
+                [ 'worker-potrait', 'jpg' ]
+            console.log(file);
+                {
+                    fieldname: 'file',
+                    originalname: 'worker-potrait.jpg',
+                    encoding: '7bit',
+                    mimetype: 'image/jpeg',
+                    destination: 'D:\\Purwadhika\\Kelas_Purwadhika\\Modul-03\\harike_34\\api\\public/avatar',
+                    filename: 'AVT1730991012098.jpg',
+                    path: 'D:\\Purwadhika\\Kelas_Purwadhika\\Modul-03\\harike_34\\api\\public\\avatar\\AVT1730991012098.jpg',
+                    size: 22534
+                }
+            console.log(name); 
+                test
+26. Membuat update picture avatar di server atau API, 
+    26.1 Update database dimana Table User mempunyai column Avatar untuk menyimpan picture, masuk ke schema.prisma dan ikuti langkah 26.2 s/d 26.10. Kemudian jalankan application API
+    26.11. Untuk mengetest UpdateAvatar, lakukan login terlebih dahulu untuk mendapatkan access_token
+    26.12 Masuk ke URL auth/avatar dan masukkan Authorization Bearer pada header, dan pada body masuk ke form-data, masukkan file picture. Klik Send
+    26.13 Jika berhasil akan muncul :
+            {
+                "message": "Success"
+            }
+
+    
+
+Note :
+Penjelasan Cookies:
+Penggunaan cookies pada front end khususnya nextJS menggunaan nextHeader atau cookiesNext. Dimana pada NextJS Server digunakan nextHeader, sedangkan pada NextJS "use Client" digunakan cookiesNext
